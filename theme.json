@@ -1,0 +1,6 @@
+{
+  "variant": "default",
+  "primary": "hsl(238, 50%, 50%)",
+  "appearance": "light",
+  "radius": 0.75
+}
