@@ -2,6 +2,62 @@ import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter"; // Import useLocation from wouter
 import pic from "./colleagues-studying-university-library.jpg";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+
+const TypewriterServices = () => {
+  const [currentService, setCurrentService] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+
+  const services = [
+    { text: "Matric Upgrade", color: "text-purple-600", bg: "bg-purple-50" },
+    { text: "Saturday School", color: "text-blue-600", bg: "bg-blue-50" },
+    { text: "Extra Classes", color: "text-green-600", bg: "bg-green-50" },
+    { text: "Varsity / College Tutoring", color: "text-orange-600", bg: "bg-orange-50" }
+  ];
+
+  useEffect(() => {
+    const service = services[currentService];
+    let index = 0;
+    setDisplayText("");
+    setIsTyping(true);
+
+    const typeInterval = setInterval(() => {
+      if (index < service.text.length) {
+        setDisplayText(service.text.slice(0, index + 1));
+        index++;
+      } else {
+        setIsTyping(false);
+        clearInterval(typeInterval);
+        
+        setTimeout(() => {
+          setCurrentService((prev) => (prev + 1) % services.length);
+        }, 2000);
+      }
+    }, 100);
+
+    return () => clearInterval(typeInterval);
+  }, [currentService]);
+
+  return (
+    <div className="mt-6 p-6 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl shadow-lg border border-indigo-100">
+      <div className="text-center">
+        <h3 className="text-xl font-bold text-gray-800 mb-4 font-mono">
+          We can help you with...
+        </h3>
+        <div className={`inline-block px-6 py-4 rounded-xl ${services[currentService].bg} border-2 border-dashed ${services[currentService].color.replace('text-', 'border-')} transition-all duration-500`}>
+          <span className={`text-2xl font-bold ${services[currentService].color} font-mono`}>
+            {displayText}
+            {isTyping && (
+              <span className="animate-pulse ml-1 text-gray-400">|</span>
+            )}
+          </span>
+        </div>
+
+      </div>
+    </div>
+  );
+};
 
 const Hero = () => {
   const [, setLocation] = useLocation(); // useLocation hook to navigate
@@ -43,6 +99,8 @@ const Hero = () => {
               <p className="mt-4 text-base sm:text-lg text-gray-600">
                 We're committed to empowering students to achieve academic greatness. Our skilled tutors offer personalized guidance to help learners conquer challenges and unlock their full potential.
               </p>
+
+              <TypewriterServices />
 
               <div className="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
                 <Button
