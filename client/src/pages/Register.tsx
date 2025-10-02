@@ -92,7 +92,7 @@ const RegisterPage = () => {
     emailjs
       .send(serviceID, templateID, emailParams, publicKey)
       .then(() => {
-        alert("Registration submitted successfully!");
+        alert("Registration submitted successfully! Please send a WhatsApp message to 0763803862 to confirm your registration.");
         console.log(formData);
       })
       .catch((err) => {

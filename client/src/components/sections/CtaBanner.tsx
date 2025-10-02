@@ -12,8 +12,8 @@ const CtaBanner = () => {
           Join JD Tutoring today and take the first step towards academic excellence in Mathematics and Physics.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button 
-            onClick={() => setLocation("/register")} 
+          <Button
+            onClick={() => window.location.href = "https://register.jdtutoring.co.za/student-registration.php"}
             variant="default"
             className="px-8 py-4 bg-white text-primary font-medium rounded-md shadow-lg hover:bg-gray-100 transition-colors"
           >

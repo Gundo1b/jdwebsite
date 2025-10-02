@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+   import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import LOGO from "./JD logo.jpg";
@@ -92,12 +92,12 @@ const Header = () => {
                     <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                   </Link>
                 ))}
-                <Link
-                  href="/Register"
+                <button
+                  onClick={() => window.location.href = "https://register.jdtutoring.co.za/student-registration.php"}
                   className="btn-primary ml-4"
                 >
                   Get Started
-                </Link>
+                </button>
               </div>
 
               {/* Mobile menu button */}
@@ -139,13 +139,15 @@ const Header = () => {
                     {item.label}
                   </Link>
                 ))}
-                <Link
-                  href="/Register"
-                  onClick={closeMobileMenu}
+                <button
+                  onClick={() => {
+                    window.location.href = "https://register.jdtutoring.co.za/student-registration.php";
+                    closeMobileMenu();
+                  }}
                   className="block w-full text-center btn-primary mt-4"
                 >
                   Get Started
-                </Link>
+                </button>
               </div>
             </div>
           </div>

@@ -74,7 +74,7 @@ const Hero = () => {
 
   // Handle click event for Enroll Now button
   const handleEnrollClick = () => {
-    setLocation("/register"); // Navigate to the /register page
+    window.location.href = "https://register.jdtutoring.co.za/student-registration.php"; // Navigate to external registration page
   };
 
   return (
@@ -209,7 +209,7 @@ const Hero = () => {
             </div>
             <div className="mt-8">
               <Button
-                onClick={() => setLocation("/register")}
+                onClick={() => window.location.href = "https://register.jdtutoring.co.za/student-registration.php"}
                 className="px-8 py-4 bg-yellow-400 text-gray-900 rounded-md font-bold hover:bg-yellow-300 transition-colors shadow-lg"
               >
                 Enroll Now
